@@ -25,7 +25,7 @@ Built with [Crawlee](https://crawlee.dev/) + [Playwright](https://playwright.dev
 
 ```bash
 # install globally via pip
-pip install extracto-scraper==2.0.0
+pip install extracto-scraper
 
 # run the interactive wizard
 extracto
