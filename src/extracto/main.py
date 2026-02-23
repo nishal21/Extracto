@@ -230,7 +230,7 @@ async def main() -> None:
 
     # API server mode
     if args.url == "serve":
-        from server import run_server
+        from extracto.server import run_server
         run_server(port=args.port)
         return
 
@@ -239,7 +239,7 @@ async def main() -> None:
     has_prompt = args.prompt or args.config
     if not has_urls or not has_prompt:
         # no args? launch the interactive wizard
-        from wizard import run_wizard
+        from extracto.wizard import run_wizard
         config = run_wizard()
         setup_logging(config.verbose)
     else:
@@ -331,7 +331,7 @@ async def main() -> None:
 
     # send webhook notification if configured
     if args.webhook:
-        from webhooks import send_webhook
+        from extracto.webhooks import send_webhook
         await send_webhook(
             url=args.webhook,
             pages_scraped=len(results),
