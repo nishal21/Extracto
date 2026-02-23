@@ -233,12 +233,12 @@
             <div class="install-steps">
                 <div class="install-step">
                     <div class="step-number">Step 01</div>
-                    <h4>Clone & Setup</h4>
-                    <pre>git clone https://github.com/nishal21/Extracto.git
-cd Extracto
-python -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt</pre>
+                    <h4>Install Package</h4>
+                    <pre># Python >= 3.9 required
+pip install extracto-scraper==2.0.0
+
+# Install browser binaries
+playwright install chromium</pre>
                 </div>
                 <div class="install-step">
                     <div class="step-number">Step 02</div>
@@ -251,10 +251,10 @@ pip install -r requirements.txt</pre>
                     <div class="step-number">Step 03</div>
                     <h4>Ignition</h4>
                     <pre># Run interactive setup wizard
-python main.py
+extracto
 
 # Or run via pure CLI flags
-python main.py "example.com" "Get data"</pre>
+extracto "example.com" "Get data"</pre>
                 </div>
             </div>
         </div>

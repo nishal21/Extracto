@@ -13,7 +13,7 @@ from typing import Any
 
 from scrapegraphai.graphs import SmartScraperGraph
 
-from config import CrawlerConfig
+from extracto.config import CrawlerConfig
 
 logger = logging.getLogger(__name__)
 

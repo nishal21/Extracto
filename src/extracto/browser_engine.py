@@ -17,7 +17,7 @@ from typing import Optional
 import html2text
 from playwright.async_api import async_playwright, Browser, BrowserContext, Page, Error as PlaywrightError
 
-from config import CrawlerConfig
+from extracto.config import CrawlerConfig
 
 logger = logging.getLogger(__name__)
 

@@ -18,10 +18,10 @@ import logging
 import sys
 import time
 
-from config import CrawlerConfig, AVAILABLE_MODELS
-from crawler_engine import CrawlerEngine
-from data_exporter import DataExporter
-from utils import console, print_banner, create_progress, print_results_preview, print_success, print_error, print_warn
+from extracto.config import CrawlerConfig, AVAILABLE_MODELS
+from extracto.crawler_engine import CrawlerEngine
+from extracto.data_exporter import DataExporter
+from extracto.utils import console, print_banner, create_progress, print_results_preview, print_success, print_error, print_warn
 
 
 def parse_args() -> argparse.Namespace:
@@ -355,7 +355,7 @@ def parse_schedule(s: str) -> float:
     return float(s)  # assume seconds
 
 
-if __name__ == "__main__":
+def cli_entry():
     args = parse_args()
 
     if args.schedule:
@@ -371,3 +371,6 @@ if __name__ == "__main__":
                 break
     else:
         asyncio.run(main())
+
+if __name__ == "__main__":
+    cli_entry()

@@ -27,13 +27,13 @@ from typing import Any
 from crawlee import Request
 from crawlee.crawlers import PlaywrightCrawler, PlaywrightCrawlingContext
 
-from config import CrawlerConfig
-from browser_engine import BrowserEngine
-from ai_extractor import AIExtractor
-from cache import PageCache
-from schema import load_schema, schema_to_prompt
-from sitemap import discover_sitemap_urls
-from robots import RobotsChecker
+from extracto.config import CrawlerConfig
+from extracto.browser_engine import BrowserEngine
+from extracto.ai_extractor import AIExtractor
+from extracto.cache import PageCache
+from extracto.schema import load_schema, schema_to_prompt
+from extracto.sitemap import discover_sitemap_urls
+from extracto.robots import RobotsChecker
 
 logger = logging.getLogger(__name__)
 

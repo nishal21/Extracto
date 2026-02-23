@@ -24,13 +24,17 @@ Built with [Crawlee](https://crawlee.dev/) + [Playwright](https://playwright.dev
 ## Quick start
 
 ```bash
-# clone and setup
-git clone https://github.com/nishal21/Extracto.git
-cd Extracto
-python -m venv .venv && .venv\Scripts\activate  # or source .venv/bin/activate on mac/linux
-pip install -r requirements.txt
-playwright install chromium
+# install globally via pip
+pip install extracto-scraper==2.0.0
 
+# run the interactive wizard
+extracto
+```
+
+*Note: Playwright requires browsers to be installed on your first run:*
+```bash
+playwright install chromium
+```
 # add your API key
 cp .env.example .env
 # edit .env and paste your key

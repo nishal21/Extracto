@@ -13,7 +13,7 @@ from rich.prompt import Prompt, Confirm, IntPrompt
 from rich.panel import Panel
 from rich.text import Text
 
-from config import CrawlerConfig, AVAILABLE_MODELS
+from extracto.config import CrawlerConfig, AVAILABLE_MODELS
 
 console = Console()
 

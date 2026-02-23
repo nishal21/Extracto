@@ -15,8 +15,8 @@ import logging
 import time
 from typing import Any
 
-from config import CrawlerConfig
-from crawler_engine import CrawlerEngine
+from extracto.config import CrawlerConfig
+from extracto.crawler_engine import CrawlerEngine
 
 logger = logging.getLogger(__name__)
 
