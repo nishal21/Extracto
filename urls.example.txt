@@ -1,0 +1,5 @@
+# one URL per line — blank lines and comments (#) are ignored
+# usage: python main.py --batch urls.txt "Extract all products"
+
+https://books.toscrape.com/
+https://quotes.toscrape.com/

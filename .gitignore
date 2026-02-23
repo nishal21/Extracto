@@ -1,0 +1,32 @@
+# python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+*.egg
+
+# venv
+.venv/
+venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# env / secrets
+.env
+
+# output
+output/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# crawlee storage
+storage/

@@ -1,0 +1,29 @@
+# core
+crawlee[playwright]>=1.0.0
+playwright>=1.40.0
+scrapegraphai>=1.0.0
+
+# data
+pandas>=2.0.0
+html2text>=2024.2.26
+openpyxl>=3.1.0
+lxml>=5.0.0
+tabulate>=0.9.0
+
+# terminal UI
+rich>=13.0.0
+
+# env
+python-dotenv>=1.0.0
+pyyaml>=6.0
+httpx>=0.27.0
+
+# LLM providers (install what you need)
+langchain-mistralai>=0.1.0
+langchain-openai>=0.1.0
+langchain-groq>=0.1.0
+langchain-google-genai>=1.0.0
+langchain-ollama>=0.1.0
+
+# API server (optional — only needed for 'serve' mode)
+# pip install fastapi uvicorn

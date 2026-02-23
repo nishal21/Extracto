@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extracto — Scrape Anything with AI</title>
+    <meta name="description" content="AI-powered web scraper. Give it a URL and tell it what data you want.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+</head>
+
+<body>
+
+    <!-- Animated BG Matrix -->
+    <div class="bg-grid"></div>
+
+    <!-- ═══ NAV ═══ -->
+    <nav class="nav" id="nav">
+        <div class="container">
+            <div class="nav-logo">
+                <img src="favicon.svg" alt="Logo">
+                Extracto
+            </div>
+            <div class="nav-links" id="navLinks">
+                <a href="#features">Features</a>
+                <a href="#playground">Demo</a>
+                <a href="#architecture">Architecture</a>
+                <a href="https://github.com/nishal21/Extracto" target="_blank" class="nav-cta">GitHub</a>
+            </div>
+            <button class="nav-mobile" id="navToggle" aria-label="Menu">☰</button>
+        </div>
+    </nav>
+
+    <!-- ═══ HERO ═══ -->
+    <section class="hero">
+        <div class="bg-glow"></div>
+        <div class="container">
+            <div class="badge">Open Source on GitHub</div>
+            <h1>Scrape Anything<br>with <span class="gradient-text">AI</span></h1>
+            <p class="subtitle">Just give Extracto a URL and describe what you want in plain English. No CSS selectors.
+                No XPath. Pure data extraction powered by LLMs.</p>
+            <div class="hero-buttons">
+                <a href="https://github.com/nishal21/Extracto" class="btn btn-primary" target="_blank">
+                    Get Started →
+                </a>
+                <a href="#playground" class="btn btn-secondary">
+                    View Demo
+                </a>
+            </div>
+
+            <!-- Terminal demo -->
+            <div class="terminal-wrap">
+                <div class="terminal-bar">
+                    <div class="terminal-dot"></div>
+                    <div class="terminal-dot"></div>
+                    <div class="terminal-dot"></div>
+                    <div class="terminal-title">bash — ./extracto</div>
+                </div>
+                <div class="terminal-body" id="terminalBody">
+                    <div><span class="prompt">$</span> <span class="cmd" id="termLine1"></span><span
+                            class="cursor"></span></div>
+                    <div id="termOutput"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ FEATURES ═══ -->
+    <section id="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>Everything you need. <br><span class="gradient-text">Pre-configured.</span></h2>
+                <p>A production-ready scraper out of the box. Single pages or millions of URLs.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z" />
+                            <path d="M20 3v4" />
+                            <path d="M22 5h-4" />
+                            <path d="M4 17v2" />
+                            <path d="M5 18H3" />
+                        </svg>
+                    </div>
+                    <h3>AI-Powered Extraction</h3>
+                    <p>Define what you want in natural language. Our engine figures out the DOM structure and pulls the
+                        exact data points reliably.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="12 2 2 7 12 12 22 7 12 2" />
+                            <polyline points="2 12 12 17 22 12" />
+                            <polyline points="2 17 12 22 22 17" />
+                        </svg>
+                    </div>
+                    <h3>Batch Mode & Cache</h3>
+                    <p>Pass hundreds of URLs in a text file. Cache pages locally so you don't waste API credits
+                        re-rendering the same pages twice.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10" />
+                            <line x1="2" x2="22" y1="12" y2="12" />
+                            <path
+                                d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                        </svg>
+                    </div>
+                    <h3>Proxy Rotation</h3>
+                    <p>Built-in round-robin proxy management out of the box to avoid rate-limiting and completely bypass
+                        IP bans.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="22" x2="2" y1="12" y2="12" />
+                            <path
+                                d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z" />
+                            <line x1="6" x2="6.01" y1="16" y2="16" />
+                            <line x1="10" x2="10.01" y1="16" y2="16" />
+                        </svg>
+                    </div>
+                    <h3>Resume Checkpoints</h3>
+                    <p>Because things fail. Extracto saves progress continuously. If your server dies, it resumes
+                        exactly where it left off.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="4.5" r="2.5" />
+                            <path d="m10.2 6.3-3.9 3.9" />
+                            <circle cx="4.5" cy="12" r="2.5" />
+                            <path d="M7 12h10" />
+                            <circle cx="19.5" cy="12" r="2.5" />
+                            <path d="m13.8 17.7 3.9-3.9" />
+                            <circle cx="12" cy="19.5" r="2.5" />
+                        </svg>
+                    </div>
+                    <h3>Sitemap Auto-Discovery</h3>
+                    <p>Point it at a domain and use the <code>--sitemap</code> flag. It will recursively find every
+                        single page and queue it up for scraping.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" />
+                            <path d="m9 12 2 2 4-4" />
+                        </svg>
+                    </div>
+                    <h3>Ethical by Default</h3>
+                    <p>Automatic robots.txt compliance. Scrapes politely with configurable rate-limiting between network
+                        requests.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ PLAYGROUND ═══ -->
+    <section id="playground">
+        <div class="container">
+            <div class="section-header">
+                <h2>Experience it <span class="gradient-text">live</span></h2>
+                <p>Try the browser-sided simulation of the Extracto pipeline below.</p>
+            </div>
+            <div class="playground-wrap">
+                <div class="playground-input">
+                    <label>Target URL</label>
+                    <select id="demoUrl">
+                        <option value="books">📚 books.toscrape.com</option>
+                        <option value="news">📰 news.ycombinator.com</option>
+                        <option value="quotes">💬 quotes.toscrape.com</option>
+                    </select>
+                    <label>Extraction Prompt</label>
+                    <textarea id="demoPrompt">Extract all book titles and their prices</textarea>
+                    <label>Export Format</label>
+                    <select id="demoFormat">
+                        <option value="json">JSON structured output</option>
+                        <option value="csv">Standard CSV</option>
+                        <option value="table">ASCII Table</option>
+                    </select>
+                    <button class="btn btn-primary" style="width:100%; margin-top: 16px;" id="demoRun">
+                        ▶ Initialize Scraper
+                    </button>
+                </div>
+                <div class="playground-output">
+                    <div class="playground-output-bar">
+                        <span style="display:flex;align-items:center;"><span class="status-dot ready"
+                                id="statusDot"></span> <span id="statusText">System Ready</span></span>
+                        <span id="demoTimer" style="color:#00ffaa;">0.0s</span>
+                    </div>
+                    <div class="playground-output-body" id="demoOutput">
+                        <span style="color: rgba(255,255,255,0.3)">// Awaiting execution...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ PROVIDERS ═══ -->
+    <section id="providers" style="padding: 60px 0 100px;">
+        <div class="container">
+            <div class="section-header" style="margin-bottom: 40px;">
+                <h2><span class="gradient-text">LLM Agnostic</span></h2>
+                <p style="font-size:1rem;">Bring your own API key, or run locally.</p>
+            </div>
+            <div class="providers-grid">
+                <div class="provider-card"><span style="color:#00b8ff">●</span> OpenAI</div>
+                <div class="provider-card"><span style="color:#00ffaa">●</span> Mistral</div>
+                <div class="provider-card"><span style="color:#ffb86c">●</span> Groq</div>
+                <div class="provider-card"><span style="color:#bd93f9">●</span> Gemini</div>
+                <div class="provider-card"><span style="color:#ff5f56">●</span> Ollama</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ INSTALL ═══ -->
+    <section id="install">
+        <div class="container">
+            <div class="section-header">
+                <h2>Deploy in <span class="gradient-text">Seconds</span></h2>
+            </div>
+            <div class="install-steps">
+                <div class="install-step">
+                    <div class="step-number">Step 01</div>
+                    <h4>Clone & Setup</h4>
+                    <pre>git clone https://github.com/nishal21/Extracto.git
+cd Extracto
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt</pre>
+                </div>
+                <div class="install-step">
+                    <div class="step-number">Step 02</div>
+                    <h4>Configure LLM</h4>
+                    <pre>cp .env.example .env
+# Edit .env and paste your API key
+# Or just use Ollama locally</pre>
+                </div>
+                <div class="install-step">
+                    <div class="step-number">Step 03</div>
+                    <h4>Ignition</h4>
+                    <pre># Run interactive setup wizard
+python main.py
+
+# Or run via pure CLI flags
+python main.py "example.com" "Get data"</pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ ARCHITECTURE ═══ -->
+    <section id="architecture">
+        <div class="container">
+            <div class="section-header">
+                <h2>Beautifully <span class="gradient-text">Engineered</span></h2>
+                <p>Completely modular. Swap out the browser engine. Swap out the LLM.</p>
+            </div>
+            <div class="arch-diagram">
+                <span class="module">main.py</span> <span style="color:var(--text-dim)">(CLI entrypoint + wizard
+                    initialization)</span>
+                ├─ <span class="module">crawler_engine.py</span> <span class="desc"># Core execution loop, batch
+                    processing, checkpoints</span>
+                │ ├─ <span class="module">browser_engine</span> <span class="desc"># Stealth Playwright + proxy rotation
+                    + screenshots</span>
+                │ ├─ <span class="module">ai_extractor</span> <span class="desc"># Langchain / ScrapeGraphAI integration
+                    + providers</span>
+                │ ├─ <span class="module">robots_check</span> <span class="desc"># robots.txt fetcher & domain
+                    compliance</span>
+                │ ├─ <span class="module">page_cache</span> <span class="desc"># Local request caching system</span>
+                │ └─ <span class="module">sitemap</span> <span class="desc"># Automatic XML link discovery</span>
+                │
+                ├─ <span class="module">data_exporter.py</span> <span class="desc"># Pipeline to JSON / CSV / XML /
+                    SQLite / Markdown</span>
+                ├─ <span class="module">server.py</span> <span class="desc"># FastAPI REST API (run with python main.py
+                    serve)</span>
+                └─ <span class="module">webhooks.py</span> <span class="desc"># Completion streaming to Slack &
+                    Discord</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ FOOTER ═══ -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-links">
+                <a href="https://github.com/nishal21/Extracto" target="_blank">GitHub Repository</a>
+                <a href="#features">Features</a>
+                <a href="#playground">Live Demo</a>
+                <a href="#install">Documentation</a>
+            </div>
+            <p>Extracto Web Scraper. Open source under the MIT License.</p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

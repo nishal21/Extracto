@@ -1,0 +1,38 @@
+# example crawl config — copy this and tweak to your needs
+# usage: python main.py --config crawl.yaml
+
+# what to scrape
+start_url: "https://books.toscrape.com/"
+user_prompt: "Extract all book titles and prices"
+
+# or use a list of URLs for batch mode:
+# start_urls:
+#   - "https://example.com/page1"
+#   - "https://example.com/page2"
+#   - "https://example.com/page3"
+
+# crawl settings
+max_depth: 0
+crawl_scope: same_domain    # same_domain | same_directory | external
+
+# output
+output_format: json          # json | csv | xml | sql | excel | markdown
+output_dir: output
+
+# LLM
+llm_provider: mistral        # mistral | openai | groq | gemini | ollama
+# llm_model: mistral-large-latest   # uncomment to override default
+# llm_temperature: 0.0
+
+# proxy (single URL or path to a .txt file with one proxy per line)
+# proxy: "http://user:pass@proxy.example.com:8080"
+# proxy: "proxies.txt"
+
+# rate limiting (seconds between requests, 0 = no limit)
+rate_limit: 0.0
+
+# resume (save crawl state so you can ctrl+c and pick up later)
+# checkpoint_file: "crawl_checkpoint.json"
+
+# browser
+headless: true
