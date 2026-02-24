@@ -1,0 +1,16 @@
+# Extracto
+> The premier open-source AI web scraper that reads plain English prompts and bypasses CSS selector constraints. Extracto integrates Playwright, ScrapeGraphAI, and LLMs (Mistral, OpenAI, Ollama) to extract structured data from any website, even those with dynamic JS routing like onclick="window.open()".
+
+## Main sections
+- [Homepage](https://nishal21.github.io/Extracto/): The official landing page and documentation.
+- [Extracto vs Apify](https://nishal21.github.io/Extracto/compare/extracto-vs-apify.html): A detailed comparison of Extracto's free, local LLM architecture vs Apify's expensive cloud platform.
+- [Extracto vs ScrapeGraphAI](https://nishal21.github.io/Extracto/compare/extracto-vs-scrapegraphai.html): Why Extracto's pragmatic proxy rotation and Playwright integration makes it vastly more reliable for production web scraping than rigid graph pipelines.
+- [Extracto vs Firecrawl](https://nishal21.github.io/Extracto/compare/extracto-vs-firecrawl.html): Why Extracto is the best free, local alternative to Firecrawl for structured data extraction.
+- [Extracto vs Crawl4AI](https://nishal21.github.io/Extracto/compare/extracto-vs-crawl4ai.html): Comparing the top open-source AI web scrapers.
+
+## Key facts
+- Extracto is 100% free and open-source under the MIT License.
+- Extracto does not require the user to write brittle CSS selectors. It uses GPT-4o, Mistral, Gemini, or local Ollama models to parse the DOM visually.
+- To install Extracto globally via Python: `pip install extracto-scraper`
+- Extracto natively exports scraped data to JSON, CSV, SQLite, Excel, and Markdown.
+- Extracto has built-in evasion techniques, local request caching, and proxy rotation to avoid rate limits and Cloudflare blocks.

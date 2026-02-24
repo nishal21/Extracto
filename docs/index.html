@@ -8,6 +8,51 @@
     <meta name="description" content="AI-powered web scraper. Give it a URL and tell it what data you want.">
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
+
+    <!-- Preload critical hero assets for LCP optimization -->
+    <link rel="preload" as="image" href="favicon.svg">
+
+    <!-- SEO Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "SoftwareApplication",
+          "name": "Extracto",
+          "operatingSystem": "Any",
+          "applicationCategory": "DeveloperApplication",
+          "description": "AI-powered web scraper and data extraction tool. Extract structured data from any website using plain English LLM prompts.",
+          "offers": {
+            "@type": "Offer",
+            "price": "0.00",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "How is Extracto different from Scrapy or BeautifulSoup?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Extracto does not require brittle CSS selectors. It visually reads websites using LLMs (like GPT-4o or Mistral) to extract whatever data you describe in plain English."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Can Extracto scrape JavaScript-rendered websites (SPAs)?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. Extracto uses Playwright under the hood to fully render React, Vue, and Angular applications before extraction, and can dynamically resolve non-standard route links like onclick='window.open()'."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
 </head>
 
 <body>
@@ -19,7 +64,7 @@
     <nav class="nav" id="nav">
         <div class="container">
             <div class="nav-logo">
-                <img src="favicon.svg" alt="Logo">
+                <img src="favicon.svg" alt="Extracto AI Web Scraper Logo" fetchpriority="high" width="32" height="32">
                 Extracto
             </div>
             <div class="nav-links" id="navLinks">
@@ -36,10 +81,11 @@
     <section class="hero">
         <div class="bg-glow"></div>
         <div class="container">
-            <div class="badge">Open Source on GitHub</div>
-            <h1>Scrape Anything<br>with <span class="gradient-text">AI</span></h1>
-            <p class="subtitle">Just give Extracto a URL and describe what you want in plain English. No CSS selectors.
-                No XPath. Pure data extraction powered by LLMs.</p>
+            <div class="badge">Open Source Python Scraper</div>
+            <h1>The Best AI Web Scraper<br>for <span class="gradient-text">Developers</span></h1>
+            <p class="subtitle">Just give Extracto a URL and describe what you want in plain English. No rigid CSS
+                selectors.
+                No brittle XPath. Pure structured data extraction powered by LLMs like GPT-4o and Mistral.</p>
             <div class="hero-buttons">
                 <a href="https://github.com/nishal21/Extracto" class="btn btn-primary" target="_blank">
                     Get Started →
@@ -317,12 +363,30 @@ extracto "example.com" "Get data"</pre>
     <footer class="footer">
         <div class="container">
             <div class="footer-links">
-                <a href="https://github.com/nishal21/Extracto" target="_blank">GitHub Repository</a>
-                <a href="#features">Features</a>
-                <a href="#playground">Live Demo</a>
-                <a href="#install">Documentation</a>
+                <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                    <strong>Product</strong>
+                    <a href="https://github.com/nishal21/Extracto" target="_blank">GitHub Repository</a>
+                    <a href="#features">Features</a>
+                    <a href="#playground">Live Demo</a>
+                    <a href="#install">Documentation</a>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                    <strong>Use Cases</strong>
+                    <a href="use-cases/ecommerce-scraping.html">E-Commerce Scraping</a>
+                    <a href="use-cases/real-estate-scraping.html">Real Estate Scraping</a>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                    <strong>Comparisons</strong>
+                    <a href="compare/extracto-vs-firecrawl.html">Extracto vs Firecrawl</a>
+                    <a href="compare/extracto-vs-crawl4ai.html">Extracto vs Crawl4AI</a>
+                    <a href="compare/extracto-vs-apify.html">Extracto vs Apify</a>
+                    <a href="compare/extracto-vs-scrapegraphai.html">Extracto vs ScrapeGraphAI</a>
+                    <a href="compare/extracto-vs-browse-ai.html">Extracto vs Browse AI</a>
+                    <a href="compare/extracto-vs-diffbot.html">Extracto vs Diffbot</a>
+                    <a href="compare/extracto-vs-scrapy.html">Extracto vs Scrapy</a>
+                </div>
             </div>
-            <p>Extracto Web Scraper. Open source under the MIT License.</p>
+            <p style="margin-top: 3rem;">Extracto Web Scraper. Open source under the MIT License.</p>
         </div>
     </footer>
 

@@ -1,0 +1,21 @@
+User-agent: *
+Allow: /
+
+# GEO Optimization (Generative Engine Optimization)
+# Explicitly welcome AI-powered Search Engines to index the documentation
+# to maximize Extracto's visibility in Perplexity, ChatGPT, and AI Overviews.
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /

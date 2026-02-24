@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extracto for E-Commerce Scraping (2026 Strategy)</title>
+    <meta name="description"
+        content="Stop building custom scrapers for every single Shopify or Magento store. Use Extracto to automatically pull product prices, reviews, and SKUs from any E-commerce site using AI.">
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- SEO Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Extracto for E-Commerce: Universal Product Extraction",
+      "author": {
+        "@type": "Organization",
+        "name": "Extracto"
+      }
+    }
+    </script>
+</head>
+
+<body>
+    <div class="bg-grid"></div>
+
+    <nav class="nav">
+        <div class="container">
+            <div class="nav-logo">
+                <a href="../index.html"
+                    style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 0.75rem;">
+                    <img src="../favicon.svg" alt="Logo">
+                    Extracto
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <br><br><br><br>
+    <section class="container" style="max-width: 800px;">
+        <h1>E-Commerce Scraping with Extracto</h1>
+
+        <p class="subtitle" style="text-align: left; max-width: 100%;">
+            Whether you are building a price-tracking engine, aggregating competitor catalogs, or running sentiment
+            analysis on Amazon reviews, extracting structured E-Commerce data is notoriously fragile. Store owners
+            constantly change UI layouts and rely on heavy React/Next.js hydration that breaks traditional scrapers.
+        </p>
+        <p>
+            <strong>Extracto solves this by rendering the cart and product pages visually</strong>, and using AI (GPT-4o
+            or Mistral) to pull exactly the schema you requested.
+        </p>
+
+        <h2 style="margin-top: 3rem;">Example: Universal Product Extraction</h2>
+
+        <p>Instead of writing custom `BeautifulSoup` parsing logic for Amazon, Walmart, BestBuy, and Shopify, you simply
+            write one universal Extracto definition in Python:</p>
+
+        <pre
+            style="background: rgba(0,0,0,0.5); padding: 1.5rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); margin-top: 1rem; overflow-x: auto;">
+<code>import asyncio
+from extracto.config import CrawlerConfig
+from extracto.crawler_engine import CrawlerEngine
+from extracto.schema import PropertyDefinition, DataType
+
+# 1. Define standard Pydantic-style Schema
+schema = [
+    PropertyDefinition(name="product_title", type=DataType.STRING, description="The main product name"),
+    PropertyDefinition(name="price", type=DataType.NUMBER, description="Current price in USD"),
+    PropertyDefinition(name="sku", type=DataType.STRING, description="The unique item identifier"),
+    PropertyDefinition(name="in_stock", type=DataType.BOOLEAN, description="Is the item currently available to purchase?")
+]
+
+# 2. Extract from ANY E-Commerce site without changing the schema
+config = CrawlerConfig(
+    start_urls=["https://store.example.com/product/1234"],
+    properties=schema,
+    llm_provider="mistral"
+)
+
+# 3. Run
+engine = CrawlerEngine(config)
+asyncio.run(engine.run())
+        </code></pre>
+
+        <h2 style="margin-top: 3rem;">Handling Dynamic React/SPA Stores</h2>
+        <p>Many modern E-commerce storefronts don't load data instantly. They render a skeleton, make GraphQL calls, and
+            hydrate the page. Extracto handles this natively with <code>Playwright</code>, waiting for the network idle
+            state before the AI scans the page visually.</p>
+
+        <a href="../index.html" class="btn btn-primary" style="margin-top: 2rem;">Build an E-Commerce Scraper Today
+            →</a>
+    </section>
+
+    <br><br><br>
+
+</body>
+
+</html>

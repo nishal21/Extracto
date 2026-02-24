@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extracto for Real Estate Scraping — Extract Zillow/Property Data using AI</title>
+    <meta name="description"
+        content="Automate real-estate data collection. Use Extracto to bypass complex map interfaces and extract property prices, square footage, and agent details effortlessly.">
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- SEO Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Extracto for Real Estate: Map & Property Extraction",
+      "author": {
+        "@type": "Organization",
+        "name": "Extracto"
+      }
+    }
+    </script>
+</head>
+
+<body>
+    <div class="bg-grid"></div>
+
+    <nav class="nav">
+        <div class="container">
+            <div class="nav-logo">
+                <a href="../index.html"
+                    style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 0.75rem;">
+                    <img src="../favicon.svg" alt="Logo">
+                    Extracto
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <br><br><br><br>
+    <section class="container" style="max-width: 800px;">
+        <h1>Real Estate Scraping with Extracto</h1>
+
+        <p class="subtitle" style="text-align: left; max-width: 100%;">
+            Real estate aggregators (like Zillow, Redfin, or local MLS platforms) are notoriously difficult to scrape.
+            They rely on heavy map integrations, anti-bot mechanisms, and highly obfuscated DOM structures (e.g.
+            <code>class="Text-c11n-8-100-2__sc-aipi13-0"</code>).
+        </p>
+        <p>
+            Traditional CSS selector tools usually fail within a week. <strong>Extracto leverages AI vision models and
+                Playwright to extract property details purely by understanding the page visually.</strong>
+        </p>
+
+        <h2 style="margin-top: 3rem;">Universal Property Schema</h2>
+
+        <p>Provide a single schema definition, and Extracto uses Mistral or GPT-4o to dynamically pull the data mapping
+            from <i>any</i> property listing website:</p>
+
+        <pre
+            style="background: rgba(0,0,0,0.5); padding: 1.5rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); margin-top: 1rem; overflow-x: auto;">
+<code>import asyncio
+from extracto.config import CrawlerConfig
+from extracto.crawler_engine import CrawlerEngine
+from extracto.schema import PropertyDefinition, DataType
+
+schema = [
+    PropertyDefinition(name="address", type=DataType.STRING, description="Full street address"),
+    PropertyDefinition(name="price", type=DataType.NUMBER, description="Listed property price"),
+    PropertyDefinition(name="bedrooms", type=DataType.INTEGER, description="Number of bedrooms"),
+    PropertyDefinition(name="bathrooms", type=DataType.NUMBER, description="Number of bathrooms"),
+    PropertyDefinition(name="sqft", type=DataType.INTEGER, description="Square footage of the home"),
+    PropertyDefinition(name="agent_phone", type=DataType.STRING, description="The listed agent's contact number")
+]
+
+config = CrawlerConfig(
+    start_urls=["https://www.realestate-example.com/listing/1"],
+    properties=schema,
+    llm_provider="openai"
+)
+
+# Run extracto
+asyncio.run(CrawlerEngine(config).run())
+        </code></pre>
+
+        <h2 style="margin-top: 3rem;">The Ultimate Advantage: Built-in Evasion</h2>
+        <p>Real Estate platforms employ strict rate limits. Extracto integrates <code>crawlee</code>'s premier evasion
+            utilities under the hood, natively injecting Stealth behaviors, managing proxy rotation, and manipulating
+            browser fingerprints to assure your crawler runs undetected.</p>
+
+        <a href="../index.html" class="btn btn-primary" style="margin-top: 2rem;">Automate Real Estate Data →</a>
+    </section>
+
+    <br><br><br>
+
+</body>
+
+</html>

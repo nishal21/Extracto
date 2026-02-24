@@ -30,3 +30,6 @@ Thumbs.db
 
 # crawlee storage
 storage/
+
+.agent/
+

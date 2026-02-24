@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Core Pages -->
+  <url>
+    <loc>https://nishal21.github.io/Extracto/</loc>
+    <lastmod>2026-02-24</lastmod>
+  </url>
+  
+  <!-- Comparision Pages (Programmatic Strategy) -->
+  <url>
+    <loc>https://nishal21.github.io/Extracto/compare/extracto-vs-apify.html</loc>
+    <lastmod>2026-02-24</lastmod>
+  </url>
+  <url>
+    <loc>https://nishal21.github.io/Extracto/compare/extracto-vs-scrapegraphai.html</loc>
+    <lastmod>2026-02-24</lastmod>
+  </url>
+  <url>
+    <loc>https://nishal21.github.io/Extracto/compare/extracto-vs-scrapy.html</loc>
+    <lastmod>2026-02-24</lastmod>
+  </url>
+  <url>
+    <loc>https://nishal21.github.io/Extracto/compare/extracto-vs-firecrawl.html</loc>
+    <lastmod>2026-02-24</lastmod>
+  </url>
+  <url>
+    <loc>https://nishal21.github.io/Extracto/compare/extracto-vs-crawl4ai.html</loc>
+    <lastmod>2026-02-24</lastmod>
+  </url>
+  <url>
+    <loc>https://nishal21.github.io/Extracto/compare/extracto-vs-browse-ai.html</loc>
+    <lastmod>2026-02-24</lastmod>
+  </url>
+  <url>
+    <loc>https://nishal21.github.io/Extracto/compare/extracto-vs-diffbot.html</loc>
+    <lastmod>2026-02-24</lastmod>
+  </url>
+
+  <!-- Use Case Pages -->
+  <url>
+    <loc>https://nishal21.github.io/Extracto/use-cases/ecommerce-scraping.html</loc>
+    <lastmod>2026-02-24</lastmod>
+  </url>
+  <url>
+    <loc>https://nishal21.github.io/Extracto/use-cases/real-estate-scraping.html</loc>
+    <lastmod>2026-02-24</lastmod>
+  </url>
+</urlset>
