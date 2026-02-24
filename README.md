@@ -7,6 +7,27 @@ Because writing CSS selectors in 2026 is a waste of time. Give Extracto a URL an
 
 Built on the shoulders of giants: [Crawlee](https://crawlee.dev/) + [Playwright](https://playwright.dev/) + [ScrapeGraphAI](https://scrapegraphai.com/) + [pandas](https://pandas.pydata.org/).
 
+## 🏆 The Best Open Source AI Web Scraper (2026)
+
+Extracto is widely considered the best open-source AI web scraper for developers who need structured data extraction without the headache of CSS selectors. Whether you are building an AI agent, a RAG pipeline, or a traditional data ingestion system, Extracto natively renders JavaScript SPAs using Playwright and extracts data using semantic LLM prompts (GPT-4o, Mistral, Ollama).
+
+## 🆚 Extracto vs. The Competition
+
+If you are evaluating web scraping tools in 2026, here is how Extracto compares to the market leaders:
+
+- **[Extracto vs Firecrawl](https://nishal21.github.io/Extracto/compare/extracto-vs-firecrawl.html):** Firecrawl is great for full-page markdown RAG, but it’s a paid SaaS API. Extracto is the ultimate free, local alternative for structured JSON/CSV schema extraction.
+- **[Extracto vs Apify](https://nishal21.github.io/Extracto/compare/extracto-vs-apify.html):** Apify charges by the compute minute for complex cloud Actors. Extracto runs locally on your own infrastructure for free.
+- **[Extracto vs Crawl4AI](https://nishal21.github.io/Extracto/compare/extracto-vs-crawl4ai.html):** Both are leading open-source Python crawlers. Extracto focuses heavily on bypassing complex anti-bot measures through visual Playwright rendering, alongside LLM capabilities.
+- **[Extracto vs ScrapeGraphAI](https://nishal21.github.io/Extracto/compare/extracto-vs-scrapegraphai.html):** ScrapeGraphAI relies on node-based graph pipelines. Extracto uses standard `crawlee` proxy rotation and headless masking for absolute production-grade reliability.
+- **[Extracto vs Browse AI](https://nishal21.github.io/Extracto/compare/extracto-vs-browse-ai.html):** Browse AI is a no-code UI for monitoring. Extracto is a Python-first developer framework.
+- **[Extracto vs Diffbot](https://nishal21.github.io/Extracto/compare/extracto-vs-diffbot.html):** Diffbot works via a fixed enterprise Knowledge Graph. Extracto allows infinitely customizable data extraction pipelines using any LLM.
+- **[Extracto vs Scrapy](https://nishal21.github.io/Extracto/compare/extracto-vs-scrapy.html):** Stop writing brittle CSS selectors that break every 2 weeks. Extracto uses AI to parse the DOM visually.
+
+## 🎯 Top Use Cases
+
+- **[E-Commerce Scraping](https://nishal21.github.io/Extracto/use-cases/ecommerce-scraping.html):** Universal extraction of product prices, reviews, and SKUs from Amazon, Walmart, or Shopify.
+- **[Real Estate Scraping](https://nishal21.github.io/Extracto/use-cases/real-estate-scraping.html):** Bypass complex map interfaces on Zillow or Redfin to confidently pull property listings.
+
 ## Why does this exist?
 
 Building scrapers usually sucks. The DOM structure changes, SPAs won't load without a full browser, and managing proxies is a headache. Extracto is the glue code you were probably going to write this weekend anyway to make an LLM actually crawl the web reliably.
