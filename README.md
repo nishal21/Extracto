@@ -45,7 +45,7 @@ Building scrapers usually sucks. The DOM structure changes, SPAs won't load with
 
 ```bash
 # install globally via pip
-pip install extracto-scraper==2.0.4
+pip install extracto-scraper==2.0.5
 
 # run the interactive wizard
 extracto

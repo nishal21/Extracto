@@ -234,6 +234,12 @@ async def main() -> None:
         run_server(port=args.port)
         return
 
+    # Fix positional argument shifting when using --batch or --config
+    # (Because 'url' is omitted, 'prompt' becomes the first positional argument)
+    if (args.batch or args.config) and args.url and not args.prompt:
+        args.prompt = args.url
+        args.url = ""
+
     # need at least a URL (or batch file or config) and a prompt
     has_urls = args.url or args.batch or args.config
     has_prompt = args.prompt or args.config
