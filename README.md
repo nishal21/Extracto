@@ -1,31 +1,30 @@
 <div align="center">
-  <img src="docs/favicon.svg" alt="Extracto Logo" width="120" height="120">
+  <img src="https://raw.githubusercontent.com/nishal21/Extracto/main/docs/favicon.svg" alt="Extracto Logo" width="120" height="120">
   <h1>Extracto</h1>
 </div>
 
-AI-powered web scraper. Give it a URL and tell it what data you want — it handles the rest.
+Because writing CSS selectors in 2026 is a waste of time. Give Extracto a URL and tell it what you want in plain English. It figures out the rest.
 
-Built with [Crawlee](https://crawlee.dev/) + [Playwright](https://playwright.dev/) + [ScrapeGraphAI](https://scrapegraphai.com/) + [pandas](https://pandas.pydata.org/).
+Built on the shoulders of giants: [Crawlee](https://crawlee.dev/) + [Playwright](https://playwright.dev/) + [ScrapeGraphAI](https://scrapegraphai.com/) + [pandas](https://pandas.pydata.org/).
 
-## What it does
+## Why does this exist?
 
-- **Smart extraction** — describe what you want in plain English, the AI pulls exactly that
-- **JavaScript rendering** — handles SPAs, dynamic content, infinite scroll
-- **Multi-format export** — JSON, CSV, XML, SQLite, Excel, Markdown
-- **Batch mode** — process hundreds of URLs from a file
-- **Proxy rotation** — avoid IP bans with automatic proxy cycling
-- **Resume/checkpoint** — crash-safe crawling, picks up where it left off
-- **Scheduled runs** — repeat crawls on a timer (every 6h, daily, etc.)
-- **REST API** — deploy as a service anyone on your team can use
-- **Webhook notifications** — get pinged on Discord/Slack when a crawl finishes
-- **robots.txt compliance** — respects site rules by default
-- **5 LLM providers** — Mistral, OpenAI, Groq, Gemini, Ollama (local)
+Building scrapers usually sucks. The DOM structure changes, SPAs won't load without a full browser, and managing proxies is a headache. Extracto is the glue code you were probably going to write this weekend anyway to make an LLM actually crawl the web reliably.
+
+- **No CSS Selectors** — Just ask for what you want (e.g., "Extract all product names and prices"). The LLM handles the parsing.
+- **Actually processes the modern web** — Renders React/Vue/Angular SPAs and handles infinite scrolls using headless Chromium.
+- **Weird web 1.0 link routing? No problem** — If a legacy site uses terrible `onclick="window.open()"` routing instead of standard `<a href>` tags, Extracto still finds and follows the links dynamically.
+- **Exports to everything** — Because nobody wants to manually convert JSON to SQLite. Supports JSON, CSV, XML, SQL, Excel, and Markdown out of the box.
+- **Built for real-world crawling** — Built-in proxy rotation, configurable rate limiting, and crash checkpoints so you don't lose hours of crawl data if your laptop reboots.
+- **Batch mode & Local Caching** — Pass hundreds of URLs at once. It caches rendered pages so you don't burn API credits when re-running a failed job.
+- **Run it as a service** — Ships with a FastAPI REST server, scheduling (`--schedule 6h`), and webhook notifications so you can plug it straight into Slack/Discord. 
+- **Bring your own LLM** — Supports Mistral, OpenAI, Groq, Google Gemini, and fully offline local inference via Ollama.
 
 ## Quick start
 
 ```bash
 # install globally via pip
-pip install extracto-scraper==2.0.2
+pip install extracto-scraper==2.0.4
 
 # run the interactive wizard
 extracto
@@ -43,21 +42,53 @@ cp .env.example .env
 python main.py "https://books.toscrape.com/" "Extract all book titles and prices"
 ```
 
-## Interactive mode
-
 Don't want to memorize flags? Just run it with no arguments:
 
 ```bash
-python main.py
+extracto
 ```
 
 A friendly wizard walks you through everything — URL, what to extract, output format, LLM provider, and optional advanced settings. No flags needed.
 
+## Python API
+
+You can easily import Extracto to use it inside your own Python applications.
+
+```python
+import asyncio
+from extracto import CrawlerConfig, CrawlerEngine
+
+async def main():
+    # 1. Define your crawl job
+    config = CrawlerConfig(
+        start_url="https://news.ycombinator.com/",
+        user_prompt="Extract top 5 post titles and their links.",
+        llm_provider="mistral",
+        output_format="json", # Returns a Python dict in code, saves JSON to disk
+        max_depth=0
+    )
+
+    # 2. Initialize the engine
+    engine = CrawlerEngine(config)
+
+    # 3. Run it and get the results directly
+    print("Crawling...")
+    results = await engine.run()
+    
+    # 4. Do whatever you want with the data!
+    for page in results:
+        print(f"Scraped {page['source_url']}:")
+        print(page["data"])
+
+if __name__ == "__main__":
+    asyncio.run(main())
+```
+
 ## CLI reference
 
 ```
-python main.py <url> <prompt> [options]
-python main.py serve                    # start REST API
+extracto <url> <prompt> [options]
+extracto serve                    # start REST API
 ```
 
 ### Core options
@@ -93,35 +124,35 @@ python main.py serve                    # start REST API
 
 ```bash
 # basic — scrape one page
-python main.py "https://news.ycombinator.com/" "Extract all post titles and links"
+extracto "https://news.ycombinator.com/" "Extract all post titles and links"
 
 # depth crawl — follow links 2 levels deep, export CSV
-python main.py "https://docs.python.org/3/" "Extract function names and descriptions" -d 2 -f csv
+extracto "https://docs.python.org/3/" "Extract function names and descriptions" -d 2 -f csv
 
 # batch mode — scrape many URLs at once
-python main.py --batch urls.txt "Extract all product names and prices" -f json
+extracto --batch urls.txt "Extract all product names and prices" -f json
 
 # structured output — force exact JSON shape
-python main.py "https://example.com" "Get products" --schema '{"name": "str", "price": "float", "in_stock": "bool"}'
+extracto "https://example.com" "Get products" --schema '{"name": "str", "price": "float", "in_stock": "bool"}'
 
 # with proxy rotation + rate limiting
-python main.py "https://example.com" "Get all links" --proxy proxies.txt --rate-limit 2
+extracto "https://example.com" "Get all links" --proxy proxies.txt --rate-limit 2
 
 # resume after crash
-python main.py --batch urls.txt "Get data" --resume checkpoint.json
+extracto --batch urls.txt "Get data" --resume checkpoint.json
 
 # use a YAML config for complex jobs
-python main.py --config crawl.yaml
+extracto --config crawl.yaml
 
 # API server mode
-python main.py serve --port 8080
+extracto serve --port 8080
 
 # scheduled monitoring — run every 6 hours
-python main.py "https://competitor.com/pricing" "Get all prices" --schedule 6h --webhook https://hooks.slack.com/your/url
+extracto "https://competitor.com/pricing" "Get all prices" --schedule 6h --webhook https://hooks.slack.com/your/url
 
 # use different LLM providers
-python main.py "https://example.com" "Get contact info" -p openai
-python main.py "https://example.com" "Get links" -p ollama -m llama3.2
+extracto "https://example.com" "Get contact info" -p openai
+extracto "https://example.com" "Get links" -p ollama -m llama3.2
 ```
 
 ## YAML config
@@ -140,7 +171,7 @@ checkpoint_file: "books_checkpoint.json"
 ```
 
 ```bash
-python main.py --config crawl.yaml
+extracto --config crawl.yaml
 ```
 
 See `crawl.example.yaml` for all available options.
@@ -151,7 +182,7 @@ Start the API server:
 
 ```bash
 pip install fastapi uvicorn  # one-time setup
-python main.py serve
+extracto serve
 ```
 
 Then call it:
@@ -181,7 +212,7 @@ docker run -p 8000:8000 -e MISTRAL_API_KEY=your_key extracto
 | Google Gemini | `GOOGLE_API_KEY` | `gemini-2.0-flash` |
 | Ollama | none (local) | `llama3.2` |
 
-Run `python main.py --list-models` to see all available models.
+Run `extracto --list-models` to see all available models.
 
 ## Architecture
 

@@ -276,7 +276,18 @@ class CrawlerEngine:
                         raw_links = await ctx.page.eval_on_selector_all(
                             "a[href]", "els => els.map(e => e.href)"
                         )
-                    except Exception:
+                        # Extract non-standard JS onclick links (e.g. classicshorts.com)
+                        onclicks = await ctx.page.eval_on_selector_all(
+                            "[onclick]", "els => els.map(e => e.getAttribute('onclick'))"
+                        )
+                        for oc in onclicks:
+                            if oc:
+                                for match in re.finditer(r"['\"]([^'\"]+)['\"]", oc):
+                                    target = match.group(1)
+                                    if " " not in target and ("/" in target or target.endswith(".html") or target.endswith(".htm")):
+                                        raw_links.append(target)
+                    except Exception as e:
+                        logger.warning("Failed to extract links from %s: %s", url, e)
                         raw_links = []
 
                     enqueued = 0
@@ -286,7 +297,6 @@ class CrawlerEngine:
                             await ctx.add_requests([
                                 Request.from_url(abs_url, user_data={"depth": child_depth, "seed": seed})
                             ])
-                            self._visited.add(self._normalize(abs_url))
                             enqueued += 1
 
                     if enqueued:
@@ -317,7 +327,6 @@ class CrawlerEngine:
                             norm = self._normalize(sm_url)
                             if norm not in self._visited:
                                 seeds.append(Request.from_url(sm_url, user_data={"depth": 0, "seed": seed_url}))
-                                self._visited.add(norm)  # mark to avoid duplication
                         if sitemap_urls:
                             logger.info("Sitemap: added %d URLs from %s", len(sitemap_urls), seed_url)
                     except Exception as e:

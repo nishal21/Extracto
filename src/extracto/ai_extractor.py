@@ -101,7 +101,7 @@ class AIExtractor:
 
         # don't blow up the context window
         max_chars = min(self._max_tokens * 3, 300_000)
-        source = markdown[:max_chars]
+        source = markdown[:max_chars]  # type: ignore
 
         graph = SmartScraperGraph(
             prompt=user_prompt,

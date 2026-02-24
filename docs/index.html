@@ -107,6 +107,18 @@
                     <div class="feature-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+                            <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+                        </svg>
+                    </div>
+                    <h3>Dynamic Link Extraction</h3>
+                    <p>Natively parses non-standard routing like `onclick="window.open()"` or `location.href`
+                        assignments for legacy/custom routing fallback.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <circle cx="12" cy="12" r="10" />
                             <line x1="2" x2="22" y1="12" y2="12" />
                             <path
@@ -166,41 +178,52 @@
         </div>
     </section>
 
-    <!-- ═══ PLAYGROUND ═══ -->
+    <!-- ═══ PYTHON API ═══ -->
     <section id="playground">
         <div class="container">
             <div class="section-header">
-                <h2>Experience it <span class="gradient-text">live</span></h2>
-                <p>Try the browser-sided simulation of the Extracto pipeline below.</p>
+                <h2>Experience it <span class="gradient-text">natively</span></h2>
+                <p>Import Extracto directly into your own asyncio applications.</p>
             </div>
-            <div class="playground-wrap">
-                <div class="playground-input">
-                    <label>Target URL</label>
-                    <select id="demoUrl">
-                        <option value="books">📚 books.toscrape.com</option>
-                        <option value="news">📰 news.ycombinator.com</option>
-                        <option value="quotes">💬 quotes.toscrape.com</option>
-                    </select>
-                    <label>Extraction Prompt</label>
-                    <textarea id="demoPrompt">Extract all book titles and their prices</textarea>
-                    <label>Export Format</label>
-                    <select id="demoFormat">
-                        <option value="json">JSON structured output</option>
-                        <option value="csv">Standard CSV</option>
-                        <option value="table">ASCII Table</option>
-                    </select>
-                    <button class="btn btn-primary" style="width:100%; margin-top: 16px;" id="demoRun">
-                        ▶ Initialize Scraper
-                    </button>
-                </div>
-                <div class="playground-output">
+            <div class="playground-wrap" style="align-items: center; justify-content: center; flex-direction: column;">
+                <div class="playground-output" style="width: 100%; max-width: 800px; display: block;">
                     <div class="playground-output-bar">
-                        <span style="display:flex;align-items:center;"><span class="status-dot ready"
-                                id="statusDot"></span> <span id="statusText">System Ready</span></span>
-                        <span id="demoTimer" style="color:#00ffaa;">0.0s</span>
+                        <span style="display:flex;align-items:center;">
+                            <span class="status-dot ready"></span>
+                            <span style="font-family: monospace; font-size: 13px;">example.py</span>
+                        </span>
                     </div>
-                    <div class="playground-output-body" id="demoOutput">
-                        <span style="color: rgba(255,255,255,0.3)">// Awaiting execution...</span>
+                    <div class="playground-output-body"
+                        style="height: auto; font-family: 'JetBrains Mono', monospace; font-size: 14px; line-height: 1.5; color: #e5e5e5;">
+                        <pre style="margin: 0; white-space: pre-wrap;">
+<span style="color: #ff7b72;">import</span> asyncio
+<span style="color: #ff7b72;">from</span> extracto <span style="color: #ff7b72;">import</span> CrawlerConfig, CrawlerEngine
+
+<span style="color: #ff7b72;">async def</span> <span style="color: #d2a8ff;">main</span>():
+    <span style="color: #8b949e;"># 1. Define your crawl job</span>
+    config = CrawlerConfig(
+        start_url=<span style="color: #a5d6ff;">"https://news.ycombinator.com/"</span>,
+        user_prompt=<span style="color: #a5d6ff;">"Extract top 5 post titles and their links."</span>,
+        llm_provider=<span style="color: #a5d6ff;">"mistral"</span>,
+        output_format=<span style="color: #a5d6ff;">"json"</span>,
+        max_depth=<span style="color: #79c0ff;">0</span>
+    )
+
+    <span style="color: #8b949e;"># 2. Initialize the engine</span>
+    engine = CrawlerEngine(config)
+
+    <span style="color: #8b949e;"># 3. Run it and get the results directly</span>
+    <span style="color: #79c0ff;">print</span>(<span style="color: #a5d6ff;">"Crawling..."</span>)
+    results = <span style="color: #ff7b72;">await</span> engine.run()
+    
+    <span style="color: #8b949e;"># 4. Process the data</span>
+    <span style="color: #ff7b72;">for</span> page <span style="color: #ff7b72;">in</span> results:
+        <span style="color: #79c0ff;">print</span>(<span style="color: #79c0ff;">f</span><span style="color: #a5d6ff;">"Scraped {page['source_url']}:"</span>)
+        <span style="color: #79c0ff;">print</span>(page[<span style="color: #a5d6ff;">"data"</span>])
+
+<span style="color: #ff7b72;">if</span> __name__ == <span style="color: #a5d6ff;">"__main__"</span>:
+    asyncio.run(main())
+</pre>
                     </div>
                 </div>
             </div>
@@ -235,7 +258,7 @@
                     <div class="step-number">Step 01</div>
                     <h4>Install Package</h4>
                     <pre># Python >= 3.9 required
-pip install extracto-scraper==2.0.2
+pip install extracto-scraper==2.0.4
 # Install browser binaries
 playwright install chromium</pre>
                 </div>

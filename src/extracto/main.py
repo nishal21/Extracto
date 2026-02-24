@@ -270,7 +270,8 @@ async def main() -> None:
         nonlocal task_id
         if task_id is None:
             return
-        progress.update(task_id, completed=total, description=f"[depth={depth}] {url[:60]}")
+        url_short = url[:60]  # type: ignore
+        progress.update(task_id, completed=total, description=f"[depth={depth}] {url_short}")
 
     with progress:
         task_id = progress.add_task("Starting...", total=None)
@@ -322,7 +323,8 @@ async def main() -> None:
         d = r["data"]
         if isinstance(d, dict):
             lists = [v for v in d.values() if isinstance(v, list)]
-            all_rows.extend(lists[0] if len(lists) == 1 else [d])
+            vlist = lists[0] if len(lists) == 1 else [d]
+            all_rows.extend(vlist)  # type: ignore
         elif isinstance(d, list):
             all_rows.extend(d)
         else:
@@ -332,7 +334,8 @@ async def main() -> None:
     print_success(out_path, len(results), elapsed)
 
     if engine.failed_urls:
-        print_warn(f"{len(engine.failed_urls)} page(s) failed: {', '.join(engine.failed_urls[:5])}")
+        err_slice = engine.failed_urls[:5]  # type: ignore
+        print_warn(f"{len(engine.failed_urls)} page(s) failed: {', '.join(err_slice)}")
 
     # send webhook notification if configured
     if args.webhook:
@@ -345,18 +348,22 @@ async def main() -> None:
             output_path=out_path,
             errors=engine.failed_urls,
         )
-        console.print(f"[dim]Webhook sent to {args.webhook[:40]}...[/]")
+        wh_short = args.webhook[:40]  # type: ignore
+        console.print(f"[dim]Webhook sent to {wh_short}...[/]")
 
 
 def parse_schedule(s: str) -> float:
     """Parse a schedule string like '6h', '30m', '1d' into seconds."""
     s = s.strip().lower()
     if s.endswith("d"):
-        return float(s[:-1]) * 86400
+        return float(s[:-1]  # type: ignore
+                     ) * 86400
     if s.endswith("h"):
-        return float(s[:-1]) * 3600
+        return float(s[:-1]  # type: ignore
+                     ) * 3600
     if s.endswith("m"):
-        return float(s[:-1]) * 60
+        return float(s[:-1]  # type: ignore
+                     ) * 60
     return float(s)  # assume seconds
 
 
