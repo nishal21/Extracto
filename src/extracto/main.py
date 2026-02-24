@@ -275,7 +275,12 @@ async def main() -> None:
     with progress:
         task_id = progress.add_task("Starting...", total=None)
 
-        engine = CrawlerEngine(config, progress_callback=on_page)
+        try:
+            engine = CrawlerEngine(config, progress_callback=on_page)
+        except ValueError as e:
+            progress.stop()
+            print_error(str(e))
+            return
 
         # if resuming, show how many we already had
         if engine.pages_done > 0:

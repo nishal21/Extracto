@@ -39,6 +39,15 @@ def create_llm(config: CrawlerConfig):
     key = config.llm_api_key
     temp = config.llm_temperature
 
+    if provider != "ollama" and not key:
+        env_vars = {
+            "mistral": "MISTRAL_API_KEY",
+            "openai": "OPENAI_API_KEY",
+            "groq": "GROQ_API_KEY",
+            "gemini": "GOOGLE_API_KEY",
+        }
+        raise ValueError(f"Missing API key for {provider.title()}. Please set {env_vars.get(provider, 'the API key')} in your .env file.")
+
     if provider == "mistral":
         from langchain_mistralai import ChatMistralAI
         return ChatMistralAI(model=model, mistral_api_key=key, temperature=temp)
