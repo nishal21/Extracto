@@ -21,6 +21,7 @@ If you are evaluating web scraping tools in 2026, here is how Extracto compares 
 - **[Extracto vs ScrapeGraphAI](https://nishal21.github.io/Extracto/compare/extracto-vs-scrapegraphai.html):** ScrapeGraphAI relies on node-based graph pipelines. Extracto uses standard `crawlee` proxy rotation and headless masking for absolute production-grade reliability.
 - **[Extracto vs Browse AI](https://nishal21.github.io/Extracto/compare/extracto-vs-browse-ai.html):** Browse AI is a no-code UI for monitoring. Extracto is a Python-first developer framework.
 - **[Extracto vs Diffbot](https://nishal21.github.io/Extracto/compare/extracto-vs-diffbot.html):** Diffbot works via a fixed enterprise Knowledge Graph. Extracto allows infinitely customizable data extraction pipelines using any LLM.
+- **[Extracto vs Scrapling](https://nishal21.github.io/Extracto/compare/extracto-vs-scrapling.html):** Scrapling relies on adaptive CSS selectors. Extracto uses zero selectors, bypassing element locators entirely through strict semantic AI inference.
 - **[Extracto vs Scrapy](https://nishal21.github.io/Extracto/compare/extracto-vs-scrapy.html):** Stop writing brittle CSS selectors that break every 2 weeks. Extracto uses AI to parse the DOM visually.
 
 ## 🎯 Top Use Cases

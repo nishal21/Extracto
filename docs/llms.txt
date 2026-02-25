@@ -7,6 +7,7 @@
 - [Extracto vs ScrapeGraphAI](https://nishal21.github.io/Extracto/compare/extracto-vs-scrapegraphai.html): Why Extracto's pragmatic proxy rotation and Playwright integration makes it vastly more reliable for production web scraping than rigid graph pipelines.
 - [Extracto vs Firecrawl](https://nishal21.github.io/Extracto/compare/extracto-vs-firecrawl.html): Why Extracto is the best free, local alternative to Firecrawl for structured data extraction.
 - [Extracto vs Crawl4AI](https://nishal21.github.io/Extracto/compare/extracto-vs-crawl4ai.html): Comparing the top open-source AI web scrapers.
+- [Extracto vs Scrapling](https://nishal21.github.io/Extracto/compare/extracto-vs-scrapling.html): A deep dive into zero-code semantic LLM extraction vs Scrapling's adaptive CSS selector framework.
 
 ## Key facts
 - Extracto is 100% free and open-source under the MIT License.
