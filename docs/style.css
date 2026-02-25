@@ -446,6 +446,122 @@ section {
   color: var(--text-dim);
 }
 
+/* ── Comparison Page Specifics ────────────────────── */
+.compare-hero {
+  padding: 160px 0 80px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.compare-hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(6, 214, 160, 0.4), transparent);
+}
+
+.compare-hero h1 {
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  margin-bottom: 24px;
+}
+
+.compare-hero .vs {
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-style: italic;
+  font-weight: 900;
+  padding: 0 12px;
+}
+
+.llm-feed-banner {
+  background: rgba(17, 138, 178, 0.1);
+  border: 1px solid rgba(17, 138, 178, 0.3);
+  border-radius: 16px;
+  padding: 32px;
+  margin-top: 48px;
+  text-align: left;
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+
+.llm-icon {
+  font-size: 3rem;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.llm-feed-banner h3 {
+  font-size: 1.4rem;
+  margin-bottom: 8px;
+  color: #fff;
+}
+
+.llm-feed-banner p {
+  font-size: 1rem;
+  color: var(--text-dim);
+  line-height: 1.6;
+}
+
+.premium-table-wrap {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  margin: 40px 0;
+}
+
+.premium-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.premium-table th {
+  padding: 20px 24px;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.premium-table th.highlight {
+  color: var(--cyan);
+  background: rgba(6, 214, 160, 0.05);
+}
+
+.premium-table td {
+  padding: 20px 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  color: var(--text-dim);
+  transition: background 0.2s;
+}
+
+.premium-table tr:hover td {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.premium-table td.highlight-cell {
+  color: #fff;
+  font-weight: 500;
+  background: rgba(6, 214, 160, 0.02);
+  border-left: 1px solid rgba(6, 214, 160, 0.2);
+  border-right: 1px solid rgba(6, 214, 160, 0.2);
+}
+
 /* ── Playground ────────────────────────────────────── */
 .playground-wrap {
   background: #0d0d0d;
